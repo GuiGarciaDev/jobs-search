@@ -1,0 +1,16 @@
+:root {
+  --header-background: #2c2c2c;
+  --header-text-color: #AAAAAA;
+  --page-background: #fff;
+  --text-primary-color: #333333;
+  --button-background: #3174EE;
+  --button-text-color: #fff;
+  --input-button-submit-background: #FF6000;
+  --selector-text-color: #3174EE;
+}
+
+* {
+  border: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
