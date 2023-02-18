@@ -1,16 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
 :root {
   --header-background: #2c2c2c;
-  --header-text-color: #AAAAAA;
+  --header-button-text-color: #AAAAAA;
+  --header-button-background: transparent;
+  --header-button-text-color-hover: #fff;
+
+  --font-style: 'Open Sans', sans-serif;
+
   --page-background: #fff;
   --text-primary-color: #333333;
   --button-background: #3174EE;
+  --button-background-hover: #205fd0;
   --button-text-color: #fff;
   --input-button-submit-background: #FF6000;
   --selector-text-color: #3174EE;
+  --border: 1px solid #bac4da;
 }
 
 * {
   border: 0;
   margin: 0;
   box-sizing: border-box;
+  font-family: var(--font-style);
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
 }

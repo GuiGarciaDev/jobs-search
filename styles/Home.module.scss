@@ -1,14 +1,43 @@
 .main {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   width: 100vw;
-  height: 100vh;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 
   .main_content {
     display: flex;
     flex-direction: column;
-    width: 1140px;
-    height: 100%;
+    align-items: center;
+    row-gap: 30px;
+    width: 100%;
+    max-width: 1180px;
+    height: calc(100% - 68px);
+    padding: 60px 20px;
+
+    .selectors_holder {
+      display: flex;
+      justify-content: flex-start;
+      width: 100%;
+      row-gap: 10px;
+      flex-wrap: wrap;
+      column-gap: 20px;
+      transition: .2s linear;
+
+      @media (max-width: 600px) {
+        & {
+          justify-content: center;
+        }
+      }
+    }
+
+    .cards_holder {
+      display: flex;
+      align-items: center;
+      padding: 0;
+      flex-direction: column;
+      row-gap: 15px;
+    }
   }
 }

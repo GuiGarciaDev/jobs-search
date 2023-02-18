@@ -1,0 +1,117 @@
+.jobcard {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    row-gap: 20px;
+    width: 100%;
+    padding: 20px;
+    border: var(--border);
+    box-shadow: 0 15px 20px -19px rgb(0 0 0 / 20%);
+    cursor: pointer;
+
+    .title_company {
+        display: flex;
+        flex-direction: column;
+
+        .title {
+            display: flex;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        span {
+            display: flex;
+        }
+    }
+
+    .description {
+        overflow: hidden;
+        width: 90%;
+        height: 65px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+
+        @media (max-width: 500px) {
+            & {
+                width: 350px;
+            }
+        }
+
+        @media (max-width: 430px) {
+            & {
+                width: 280px;
+            }
+        }
+
+        @media (max-width: 390px) {
+            & {
+                width: 240px;
+            }
+        }
+    }
+
+    .salary_time {
+        display: flex;
+        column-gap: 50px;
+
+        @media (max-width: 500px) {
+            flex-direction: column;
+        }
+    }
+
+    .buttons_holder {
+        display: flex;
+        justify-content: flex-end;
+
+        .icon_button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            top: 30px;
+            right: 30px;
+            background-color: transparent;
+            border-radius: 50%;
+            transition: all .1s linear;
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.05);
+                color: var(--button-background);
+            }
+
+            @media (max-width: 500px) {
+                & {
+                    top: 20px;
+                    right: 10px;
+                }
+            }
+        }
+
+        .view_button {
+            padding: 10px 30px;
+            font-weight: 600;
+            color: var(--button-text-color);
+            background-color: var(--button-background);
+            border-radius: 5px;
+            transition: background-color .1s linear;
+            cursor: pointer;
+
+            &:hover {
+                background-color: var(--button-background-hover);
+            }
+        }
+    }
+
+    &:hover {
+        .title_company {   
+            .title {
+                color: var(--button-background);
+            }
+        }
+    }
+}
