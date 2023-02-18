@@ -63,7 +63,7 @@ export default function Home({ data } : InferGetServerSidePropsType<typeof getSe
           </div>
           <ul className={styles.cards_holder}>
             { filteredData.length > 0
-                ? filteredData.map((job) => {return ( <JobCard job={job}/> )})
+                ? filteredData.map((job) => {return ( <JobCard job={job} key={job.jobId}/> )})
                 : <span>No jobs found</span>
             } 
           </ul>
