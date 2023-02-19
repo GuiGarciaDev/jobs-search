@@ -1,22 +1,30 @@
 import Head from 'next/head'
 import styles from '@/styles/Home.module.scss'
 import Header from '@/src/components/header/Header'
-import Selector from '@/src/components/selector/Selector'
+import Selector, { options } from '@/src/components/selector/Selector'
 import { InferGetServerSidePropsType } from "next"
 import JobCard from '@/src/components/job-card/JobCard'
 
 import { JobData, Request } from '@/src/types/dataType'
 import { useEffect, useState } from 'react'
-import { companyNameOptions, postedDateOptions } from '@/src/utils/options'
+import { postedDateOptions } from '@/src/utils/options'
 import InputForm from '@/src/components/input-form/InputForm'
 import { applyCompanyNameFilter, applyJobTitleFilter, applyPostedDateFilter, removeFilter } from '@/src/utils/filter'
 
 export default function Home({ data } : InferGetServerSidePropsType<typeof getServerSideProps>) {
   const [filteredData, setFilteredData] = useState<JobData[]>(data.jobs); // State to store all data filtered by some filter
+  const [companyOptions, setCompanyOptions] = useState<options[]>([]); // State to save dynamically all names companies find in this API
 
   const [jobTitle, setJobTitle] = useState<string>(""); // Filter param - search for commpany name
   const [postedDate, setPostDate] = useState<string>("All"); // Filter param - filter by posted date
   const [companyName, setCompanyName] = useState<string>("All"); // Filter param - filter by company name
+
+
+  useEffect(() => {
+    const array = [{ "value": "All", "text": 'Company' }] // Starting with default values for the selector
+    data.jobs.forEach(el => array.push({ 'value': el.companyName, 'text': el.companyName})) // Pushing all company names to the array
+    setCompanyOptions(array) // Set array to this state
+  }, [])
 
   useEffect(() => { // When postedDate change, filter data.jobs 
     if (postedDate === 'All') {
@@ -56,7 +64,7 @@ export default function Home({ data } : InferGetServerSidePropsType<typeof getSe
           <div className={styles.selectors_holder}>
             <InputForm value={jobTitle} changeValue={setJobTitle} placeholder={'Search job...'}/>
              <Selector state={postedDate} changeState={setPostDate} options={postedDateOptions}/>
-             <Selector state={companyName} changeState={setCompanyName} options={companyNameOptions}/>
+             <Selector state={companyName} changeState={setCompanyName} options={companyOptions}/>
           </div>
           <ul className={styles.cards_holder}>
             { filteredData.length > 0
