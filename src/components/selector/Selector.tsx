@@ -7,7 +7,7 @@ interface SelectorProps {
     options: options[] // Array of option to render
 }
 
-interface options { // Each option should have it to render
+export interface options { // Each option should have it to render
     value: string,
     text: string,
 }
