@@ -18,9 +18,6 @@ export default function Home({ data } : InferGetServerSidePropsType<typeof getSe
   const [postedDate, setPostDate] = useState<string>("All"); // Filter param - filter by posted date
   const [companyName, setCompanyName] = useState<string>("All"); // Filter param - filter by company name
 
-  console.log(filteredData);
-  
-
   useEffect(() => { // When postedDate change, filter data.jobs 
     if (postedDate === 'All') {
       removeFilter(setFilteredData, data.jobs)
